@@ -87,37 +87,37 @@ var orders = [{product: "Finger Toothbrush", price: 9.99}, {product: "Barry Mani
 var myOrders = document.getElementById('myOrders');
 
 function createButtons(){
-  for(var i=0; i<orders.length; i++){
+  for (var i = 0; i < orders.length; i++) {
     var newButton = document.createElement('button');
-    var newSpan1 = document.createElement('span');
-    newSpan1.innerHTML = orders[i].product;
-    newButton.appendChild(newSpan1);
-    newSpan1.id = "newSpan1";
-    var newSpan2 = document.createElement('span');
-    newSpan2.innerHTML = orders[i].price;
-    newButton.appendChild(newSpan2);
-    newSpan2.id = "newSpan2";
-    newSpan2.style.display = 'none';
-    newButton.addEventListener('click', togglePrice);
+    newButton.className = "priceButton";
+
+    var productSpan = document.createElement('span');
+    productSpan.innerHTML = orders[i].product;
+    productSpan.className = "itemName";
+    newButton.appendChild(productSpan);
+
+    var priceSpan = document.createElement('span');
+    priceSpan.innerHTML = orders[i].price;
+    priceSpan.className = "itemPrice";
+    priceSpan.id  = "itemPrice"+i;
+    priceSpan.style.display = 'none';
+    newButton.appendChild(priceSpan);
+
     myOrders.appendChild(newButton);
+    newButton.addEventListener('click', togglePrice);
   }
 }
 
 createButtons();
 
 function togglePrice(){
-  var thePrice = document.getElementById("newSpan2");
-  if (thePrice.style.display === 'none'){thePrice.style.display = 'block';
-} else {
-  thePrice.style.display = 'none';
-}
+  var thePrice = this.querySelectorAll('.itemPrice')[0];
+  if (thePrice.style.display === 'none'){
+    thePrice.style.display = 'block';
+  }else{
+    thePrice.style.display = 'none';
+  }
 }
 
 
 };
-
-
-
-
-
-

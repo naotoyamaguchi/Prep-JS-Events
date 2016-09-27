@@ -175,3 +175,6 @@ li:hover{
   content: '$';
 }
 
+.itemPrice{
+  display: none;
+}
